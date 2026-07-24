@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Sunday Garage MSRP MDT",
+  "description": "Mobile Data Terminal (MDT) for Sunday Garage MSRP with On Duty/Off Duty management, automatic shift duration logs, role-based access control, and secure supervisor audit logs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
