@@ -44,8 +44,9 @@ const LOCAL_STORAGE_KEY_AUTH = 'sg_msrp_mdt_authenticated_v1';
 export const MDTProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
     const savedAuth = localStorage.getItem(LOCAL_STORAGE_KEY_AUTH);
-    return savedAuth ? savedAuth === 'true' : true; // Default true so user can start, or toggle to false on logout
-  });
+    return savedAuth === 'true';
+});
+
   // Load initial state from localStorage or fallback
   const [users, setUsers] = useState<User[]>(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY_USERS);
@@ -56,12 +57,8 @@ export const MDTProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
 
   const [currentUserId, setCurrentUserId] = useState<string>(() => {
-    const saved = localStorage.getItem(LOCAL_STORAGE_KEY_CURRENT_USER);
-    if (saved && INITIAL_USERS.some(u => u.id === saved)) {
-      return saved;
-    }
-    return 'usr_02'; // Default to Ramon Diaz (Supervisor) so supervisor functions can be explored easily
-  });
+    return localStorage.getItem(LOCAL_STORAGE_KEY_CURRENT_USER) || '';
+});
 
   const [shifts, setShifts] = useState<ShiftLog[]>(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY_SHIFTS);
